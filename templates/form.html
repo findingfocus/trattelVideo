@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattel Video Worksheets</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: linear-gradient(180deg, #000000, #000033); /* Gradient from blue to purple */
+        }
+        h1 {
+            margin-bottom: 5px;
+            margin-top: 0px;
+            text-align: right; /* Align title to the right */
+        }
+        form {
+            max-width: 600px;
+            margin: 0 0 0 auto; /* Align form to the right */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #001a57;
+        }
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 7px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trattel Video Worksheets</h1>
+    <form id="taskForm">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" value="2024" autocomplete="off"><br>
+
+        <label for="videographer">Videographer:</label>
+        <input type="text" id="videographer" name="videographer" list="videographers" value="" autocomplete="off">
+        <datalist id="videographers">
+            <option value="Isaac Teague">
+            <option value="Charlene Sanchez">
+            <option value="Paul Thompson">
+            <option value="Gary Goldblum">
+        </datalist>
+
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select><br>
+
+        <label for="day">Day:</label>
+        <select id="day" name="day">
+            <script>
+                for (let i = 1; i <= 31; i++) {
+                    document.write('<option value="' + i + '">' + i + '</option>');
+                }
+            </script>
+        </select><br>
+
+        <label for="start_time">Start Time:</label>
+        <input type="text" id="start_time" name="start_time" value="9:00AM" autocomplete="off"><br>
+
+        <label for="deponent">Deponent:</label>
+        <input type="text" id="deponent" name="deponent" value="" autocomplete="off"><br>
+
+        <label for="case_name">Case Name:</label>
+        <input type="text" id="case_name" name="case_name" value="" autocomplete="off"><br>
+
+        <label for="plaintiff_attorney">Plaintiff Attorney:</label>
+        <input type="text" id="plaintiff_attorney" name="plaintiff_attorney" value="" autocomplete="off"><br>
+
+        <label for="defense_attorney">Defense Attorney:</label>
+        <input type="text" id="defense_attorney" name="defense_attorney" value="" autocomplete="off"><br>
+
+        <button type="submit">Download</button>
+    </form>
+
+    <script>
+ document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('/run_task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                if (data.zip_file_url) {
+                    const a = document.createElement('a');
+                    a.href = data.zip_file_url;
+                    a.download = 'Output.zip';  // Optional: set a default name for the downloaded file
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                } else {
+                    alert('An error occurred.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    </script>
+    </script>
+</body>
+</html>
+
