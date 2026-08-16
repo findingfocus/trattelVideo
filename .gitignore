@@ -1,0 +1,9 @@
+*.env
+.env
+__pycache__/
+*.pyc
+myflaskenv/
+.idea/
+*.idea/
+.DS_Store
+*.DS_Store

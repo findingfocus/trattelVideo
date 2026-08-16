@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: ../trattelVideo
+      platforms:
+        - linux/amd64
+    image: trattel
+    ports:
+      - "8000:8000"

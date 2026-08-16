@@ -5,136 +5,214 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trattel Video Worksheets</title>
     <style>
-        html, body {
-            height: 100%;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background: linear-gradient(180deg, #000000, #000033); /* Gradient from blue to purple */
         }
+
+
+        html {
+            background: linear-gradient(180deg, #000000 0%, #000033 100%);
+            background-attachment: fixed;
+            color: #e8eaf6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem 1rem 0;
+        }
+
         h1 {
-            margin-bottom: 5px;
-            margin-top: 0px;
-            text-align: center; /* Align title to the right */
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-top: .5rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+            text-align: center;
+            color: #f1f5f9;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
         form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #001a57;
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: rgba(0, 20, 70, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(80, 120, 220, 0.3);
+            border-radius: 16px;
+            box-shadow:
+                    0 20px 40px rgba(0, 0, 0, 0.45),
+                    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
         }
+
         label {
             display: block;
-            margin-bottom: 4px;
-            font-weight: bold;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #a8c0ff;
+            letter-spacing: 0.01em;
         }
-        input[type="text"], select {
+
+        input[type="text"],
+        select {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 1.15rem;
+            font-size: 0.95rem;
+            color: #e8eaf6;
+            background: rgba(0, 12, 40, 0.8);
+            border: 1px solid rgba(70, 110, 200, 0.35);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 7px 10px;
-            border: none;
-            border-radius: 4px;
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #4a7dff;
+            background: rgba(0, 18, 55, 0.95);
+            box-shadow: 0 0 0 3px rgba(60, 110, 220, 0.25);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a8c0ff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.9rem center;
+            padding-right: 2.2rem;
             cursor: pointer;
-            font-size: 16px;
         }
+
+        button {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.85rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #1a56db, #1e40af);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+            box-shadow: 0 4px 14px rgba(30, 70, 180, 0.45);
+        }
+
         button:hover {
-            background-color: #45a049;
+            filter: brightness(1.12);
+            box-shadow: 0 6px 20px rgba(30, 70, 180, 0.55);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 520px) {
+            form {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Trattel Video Worksheets</h1>
-    <form id="taskForm">
-        <label for="year">Year:</label>
-        <input type="text" id="year" name="year" value="2025" autocomplete="off"><br>
+<h1>Trattel Video Worksheets</h1>
 
-        <label for="videographer">Videographer:</label>
-        <input type="text" id="videographer" name="videographer" list="videographers" value="" autocomplete="off">
-        <datalist id="videographers">
-            <option value="Isaac Teague">
-            <option value="Charlene Sanchez">
-            <option value="Paul Thompson">
-            <option value="Gary Goldblum">
-        </datalist>
+<form id="taskForm">
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" value="2026" autocomplete="off">
 
-        <label for="month">Month:</label>
-        <select id="month" name="month">
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-        </select><br>
+    <label for="videographer">Videographer:</label>
+    <input type="text" id="videographer" name="videographer" list="videographers" value="" autocomplete="off">
+    <datalist id="videographers">
+        <option value="Isaac Teague">
+        <option value="Charlene Sanchez">
+        <option value="Brett Wasserman">
+        <option value="Gary Goldblum">
+    </datalist>
 
-        <label for="day">Day:</label>
-        <select id="day" name="day">
-            <script>
-                for (let i = 1; i <= 31; i++) {
-                    document.write('<option value="' + i + '">' + i + '</option>');
-                }
-            </script>
-        </select><br>
+    <label for="month">Month:</label>
+    <select id="month" name="month">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
 
-        <label for="start_time">Start Time:</label>
-        <input type="text" id="start_time" name="start_time" value="9:00AM" autocomplete="off"><br>
+    <label for="day">Day:</label>
+    <select id="day" name="day">
+        <script>
+            for (let i = 1; i <= 31; i++) {
+                document.write('<option value="' + i + '">' + i + '</option>');
+            }
+        </script>
+    </select>
 
-        <label for="deponent">Deponent:</label>
-        <input type="text" id="deponent" name="deponent" value="" autocomplete="off"><br>
+    <label for="start_time">Start Time:</label>
+    <input type="text" id="start_time" name="start_time" value="9:00AM" autocomplete="off">
 
-        <label for="case_name">Case Name:</label>
-        <input type="text" id="case_name" name="case_name" value="" autocomplete="off"><br>
+    <label for="deponent">Deponent:</label>
+    <input type="text" id="deponent" name="deponent" value="" autocomplete="off">
 
-        <label for="plaintiff_attorney">Plaintiff Attorney:</label>
-        <input type="text" id="plaintiff_attorney" name="plaintiff_attorney" value="" autocomplete="off"><br>
+    <label for="case_name">Case Name:</label>
+    <input type="text" id="case_name" name="case_name" value="" autocomplete="off">
 
-        <label for="defense_attorney">Defense Attorney:</label>
-        <input type="text" id="defense_attorney" name="defense_attorney" value="" autocomplete="off"><br>
+    <label for="plaintiff_attorney">Plaintiff Attorney:</label>
+    <input type="text" id="plaintiff_attorney" name="plaintiff_attorney" value="" autocomplete="off">
 
-        <button type="submit">Download</button>
-    </form>
+    <label for="defense_attorney">Defense Attorney:</label>
+    <input type="text" id="defense_attorney" name="defense_attorney" value="" autocomplete="off">
 
-    <script>
- document.getElementById('taskForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+    <button type="submit">Download</button>
+</form>
 
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
+<script>
+    document.getElementById('taskForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            fetch('/run_task', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        fetch('/run_task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
                 if (data.zip_file_url) {
                     const a = document.createElement('a');
                     a.href = data.zip_file_url;
-                    a.download = 'Output.zip';  // Optional: set a default name for the downloaded file
+                    a.download = 'Output.zip';
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
@@ -146,9 +224,7 @@
                 console.error('Error:', error);
                 alert('An error occurred.');
             });
-        });
-    </script>
-    </script>
+    });
+</script>
 </body>
 </html>
-
