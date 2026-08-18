@@ -7,3 +7,4 @@ myflaskenv/
 *.idea/
 .DS_Store
 *.DS_Store
+.envrc

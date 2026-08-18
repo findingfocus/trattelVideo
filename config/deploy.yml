@@ -1,0 +1,23 @@
+service: trattel
+image: findingfocusdev/trattel
+
+servers:
+  web:
+    - 216.128.140.9
+
+proxy:
+  ssl: true
+  host: trattel.xyz
+  app_port: 8000
+
+registry:
+  username: findingfocusdev
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+  driver: docker
+
+ssh:
+  user: findingfocus
